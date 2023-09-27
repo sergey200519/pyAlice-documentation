@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pyAlice | Документация</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="../style/css/style.css">
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="container header_container">
+                <a href="../index.html" class="header_logo-title">pyAlice</a>
+                <nav class="header_nav">
+                    <ul>
+                        <li><a href="../index.html">Гланая</a></li>
+                        <li><a href="#">Скачать</a></li>
+                        <li><a href="#">Документация</a></li>
+                        <li><a href="#">Новости</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section class="search_doc">
+            <div class="container search_doc_container">
+                <h1>Документация</h1>
+                <div class="search_doc_container_search">
+                    <input type="text" placeholder="Поиск">
+                </div>
+                
+            </div>
+        </section>
+        <hr>
+        <main class="main">
+            <div class="main_container container">
+                <section class="main_container_left section_a_decoration">
+                    <div class="firts_step">
+                        <h2>Начальная структура проекта</h2>
+                        <ul>
+                            <li><a href="#">index.py</a></li>
+                            <li><a href="#settings">settings.py</a> файл для хранения настроек</li>
+                            <li><a href="#">buttons.py</a> файл для хранения кнопок</li>
+                            <li><a href="#">events.py</a> файл для хранения event(ов)</li>
+                            <li><a href="#">key_words.py</a> файл для хранения key_words</li>
+                            <li><a href="#">messages.py</a> файл для хранения всех сообщений для пользователя</li>
+                            <li><a href="#">more_data_messages.py</a>(необязательно) файл для хранения дополнительных данных, выдаваемых пользователю</li>
+                            <li><a href="#">simulation.py</a>(необезятелно) файл для симуляции и тестирования проекта</li>
+                        </ul>
+                        <p>Пример <a href="https://github.com/sergey200519/pyAlice-project" target="_blank">начального проекта</a></p>
+                    </div>
+                    <div class="settings_documentation">
+                        <div class="">
+                            <h2 id="settings">settings.py</h2>
+                            <p>В файле settings.py хранятся настроики, изменяя которые, можно гибко изменять проект.</p>
+                        </div>
+                        <div class="">
+                            <h3>EVENTS</h3>
+                            <p>Константа EVENTS отвечает за вызовы event(ов). В положение True event(ы) вызываются. В положение False event(ы)
+                                не работуюют и не сохраняются.</p>
+                            <p class="examples_code">
+                                EVENTS = True
+                            </p>
+                        </div>
+                        
+                        <div class="">
+                            <h3>DEBUG</h3>
+                            <p>Константа DEBUG отвечает за вывод логов о работе pyAlice. В положение True логи записываются.</p>
+                            <p>Константа LOG_OUTPUT_IMMEDIATELY отвечает за вывод логов в терминал. В положение True логи выводятся в терминал.
+                            </p>
+                            <p class="examples_code">
+                                DEBUG = True
+                                LOG_OUTPUT_IMMEDIATELY = True
+                            </p>
+                        </div>
+                        
+                        <div class="">
+                            <h3>Key words</h3>
+                            <p>Константа TEXT_FOR_KEY_WORDS - источник откуда будет взят текст для обработки KeyWords. TEXT_FOR_KEY_WORDS может
+                                иметь лишь два значения "command" или "original_utterance".</p>
+                            <p>Константа KEY_WORD - ключевые слова, которые хранятся в файле <a href="">key_words.py</a>.</p>
+                            <p class="examples_code">
+                                TEXT_FOR_KEY_WORDS = "command"
+                                KEY_WORD = key_words.key_words
+                            </p>
+                        </div>
+                        
+                        <div class="">
+                            <h3>Messages</h3>
+                            <p>Константа ALL_MESSAGES - все сообщения, которые хранятся в файле <a href="">messages.py</a>.</p>
+                            <p>Константа STARTING_MESSAGE - первое сообщение, которое увидет польззователь при входе в диалог.</p>
+                            <p>Константа MORE_DATA_MESSAGES - дополнительные данные к сообщениям, которые хранятся в файле <a
+                                    href="">more_data_messages.py</a>.</p>
+                            <p class="examples_code">
+                                ALL_MESSAGES = messages.messages
+                                STARTING_MESSAGE = "start_message"
+                                MORE_DATA_MESSAGES = more_data_messages.more_data_messages
+                            </p>
+                        </div>
+                        
+                        <div class="">
+                            <h3>Buttons</h3>
+                            <p>Константа BUTTONS - все кнопки, которые хранятся в файле <a href="">buttons.py</a>.</p>
+                            <p>Константа BUTTONS_GROUPS - кнопки объединёные в группы. Название групп должны начанаться с символа "$".</p>
+                            <p>Константа STARTING_BUTTONS - первые кнопи, которое увидет польззователь при входе в диалог.</p>
+                            <p class="examples_code">
+                                BUTTONS = buttons.buttons
+                                BUTTONS_GROUPS = {
+                                $tab "$buttons_group1": ["btn1", "btn2"]
+                                }
+                                STARTING_BUTTONS = ["$buttons_group1", "btn4"]
+                            </p>
+                        </div>
+                    </div>
+                    
+                </section>
+                <section class="main_container_right">
+                    <a href="https://pypi.org/project/pyaliceya/" class="main_container_right_download" target="_blank">Скачать последнюю версию</a>
+                    <h2>Новости</h2>
+                    <div class="main_container_right_news news_main_page">
+                        <div class="news_main_page_item">
+                            <a href="">Выход новой версии pyAlice 0.1.3</a>
+                            <p>Сегодня вышла новая версия pyAlice 0.1.3. Данная версия исправила множество недостатков и ошибок прошлой версии</p>
+                            <span>25 сентебря 2023 года</span>
+                        </div>
+                        <div class="news_main_page_item">
+                            <a href="">Выход новой версии pyAlice 0.1.</a>
+                            <p>Сегодня вышла новая версия pyAlice 0.1.3. Данная версия исправила множество недостатков и ошибок прошлой версии</p>
+                            <span>25 сентебря 2023 года</span>
+                        </div>
+                        <div class="news_main_page_item">
+                            <a href="">Выход новой версии pyAlice 0.1.3</a>
+                            <p>Сегодня вышла новая версия pyAlice 0.1.3. Данная версия исправила множество недостатков и ошибок прошлой версии</p>
+                            <span>25 сентебря 2023 года</span>
+                        </div>
+                    </div>
+                </section>
+            </div>            
+        </main>
+        <footer class="footer">
+            <div class="container footer_container">
+                <div class="footer_menu">
+                    <a href="../index.html" class="footer_menu_logo-title">pyAlice</a>
+                    <nav class="footer_menu_nav">
+                        <ul>
+                            <li><a href="../index.html">Гланая</a></li>
+                            <li><a href="#">Скачать</a></li>
+                            <li><a href="#">Документация</a></li>
+                            <li><a href="#">Новости</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+        <script type="module" src="../scripts/script.js"></script>
+        <script src="../scripts/searchDocumentation.js"></script>
+    </body>
+</html>

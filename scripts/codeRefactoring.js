@@ -19,6 +19,23 @@ function isConst(str) {
     return false
 }
 
+function spaceN(nTab=1, tab=4) {
+    let answer = ""
+    for (let i = 0; i < nTab; i++) {
+        let temp = ""
+        for (let i = 0; i < tab; i++) {
+            temp += " "
+        }
+        answer += temp
+    }
+    return answer
+}
+
+function addTabs(str) {
+    if (str == "$tab") return spaceN()
+    let n = parseInt(str.replace("$tab", ""))
+    return spaceN(n)
+}
 
 function fromStringToArrayWords(str) {
     let answer = [];
@@ -64,8 +81,8 @@ class codeRefactoring {
         let answer = [];
         let arrCode = fromStringToArrayWords(this.code)
         arrCode.forEach(el => {
-            if (el == "$tab") {
-                answer.push("<pre>   </pre>")
+            if (el.includes("$tab")) {
+                answer.push(`<pre>${addTabs(el)}</pre>`)
                 return
             }
             if (reservedWordsPython.includes(el)) {

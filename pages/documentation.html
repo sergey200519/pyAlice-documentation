@@ -40,18 +40,18 @@
         <hr>
         <main class="main">
             <div class="main_container container">
-                <section class="main_container_left section_a_decoration">
+                <section class="main_container_left section_a_decoration documentation_page_left">
                     <div class="firts_step">
                         <h2>Начальная структура проекта</h2>
                         <ul>
                             <li><a href="#">index.py</a></li>
                             <li><a href="#settings">settings.py</a> файл для хранения настроек</li>
-                            <li><a href="#">buttons.py</a> файл для хранения кнопок</li>
+                            <li><a href="#buttons">buttons.py</a> файл для хранения кнопок</li>
                             <li><a href="#">events.py</a> файл для хранения event(ов)</li>
-                            <li><a href="#">key_words.py</a> файл для хранения key_words</li>
+                            <li><a href="#key_words">key_words.py</a> файл для хранения key_words</li>
                             <li><a href="#">messages.py</a> файл для хранения всех сообщений для пользователя</li>
-                            <li><a href="#">more_data_messages.py</a>(необязательно) файл для хранения дополнительных данных, выдаваемых пользователю</li>
-                            <li><a href="#">simulation.py</a>(необезятелно) файл для симуляции и тестирования проекта</li>
+                            <li><a href="#">more_data_messages.py</a> (необязательно) файл для хранения дополнительных данных, выдаваемых пользователю</li>
+                            <li><a href="#">simulation.py</a> (необезятелно) файл для симуляции и тестирования проекта</li>
                         </ul>
                         <p>Пример <a href="https://github.com/sergey200519/pyAlice-project" target="_blank">начального проекта</a></p>
                     </div>
@@ -105,8 +105,8 @@
                         </div>
                         
                         <div class="">
-                            <h3>Buttons</h3>
-                            <p>Константа BUTTONS - все кнопки, которые хранятся в файле <a href="">buttons.py</a>.</p>
+                            <h3>Buttons settings</h3>
+                            <p>Константа BUTTONS - все кнопки, которые хранятся в файле <a href="#buttons">buttons.py</a>.</p>
                             <p>Константа BUTTONS_GROUPS - кнопки объединёные в группы. Название групп должны начанаться с символа "$".</p>
                             <p>Константа STARTING_BUTTONS - первые кнопи, которое увидет польззователь при входе в диалог.</p>
                             <p class="examples_code">
@@ -127,6 +127,98 @@
                                 $tab    "endAliceEvent": end_alice_event,
                                 }
                                 IGNORE_EVENTS_LIST = ["storageFillEvent"]
+                            </p>
+                        </div>
+
+                        <div class="">
+                            <h3>Language</h3>
+                            <p>Константа DEBUG_LANGUAGE позволяет изменить язык логов.</p>
+                            <p>Константа SOURCE_TEXT содержит источник текста. SOURCE_TEXT может иметь лишь два значения "command" или "original_utterance".</p>
+                            <p class="examples_code">
+                                DEBUG_LANGUAGE = "ru"
+                                SOURCE_TEXT = "command"
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="buttons_documentation">
+                        <div class="">
+                            <h2 id="buttons">buttons.py</h2>
+                            <p>В файле buttons.py хранятся кнопки под уникальным именем, к которому можно обратиться и получить кнопку. Также кнопки можно объединять в группы и при обращении к группе будут вызваны все кнопки данной группе.</p>
+                        </div>
+                        <div class="">
+                            <h3>Buttons</h3>
+                            <p>В переменую buttons складываем все кнопки под уникальными ключами.</p>
+                            <p class="examples_code">
+                                buttons = {
+                                $tab "btn1": {
+                                $tab3 "title": "btn1-title",
+                                $tab3 "payload": {
+                                $tab4 "title": "btn1-title"
+                                $tab2 },
+                                $tab2 "hide": True
+                                $tab },
+                                $tab "btn2": {
+                                $tab3 "title": "btn2-title",
+                                $tab3 "payload": {
+                                $tab4 "title": "btn2-title"
+                                $tab2 },
+                                $tab2 "hide": False
+                                $tab },
+                                $tab "btn3": {
+                                $tab3 "title": "btn3-title",
+                                $tab3 "payload": {
+                                $tab4 "title": "btn3-title"
+                                $tab2 },
+                                $tab2 "hide": True
+                                $tab }
+                                }
+                            </p>
+                            <p>В файле <a href="#settings">settings.py</a> подключаем кнопки.</p>
+                            <p class="examples_code">
+                                import buttons
+
+                                BUTTONS = buttons.buttons
+                                BUTTONS_GROUPS = {
+                                $tab "$buttons_group1": ["btn1", "btn2"]
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="key_words_documentation">
+                        <div class="">
+                            <h2 id="key_words">key_words.py</h2>
+                            <p>В файле buttons.py хранятся кнопки под уникальным именем, к которому можно обратиться и получить кнопку. Также кнопки можно объединять в группы и при обращении к группе будут вызваны все кнопки данной группе.</p>
+                        </div>
+                        <div class="">
+                            <h3>Buttons</h3>
+                            <p>В переменую key_words складываем все ключевые слова под уникальными ключами.</p>
+                            <p>В поле "key_words" вписываем масссив слов при которых должно вызваться key_words.</p>
+                            <p>В поле "event" вписываем event которой будет вызван. При отсутствии вписываем "$NULL".</p>
+                            <p>В поле "message" вписываем ключ сообщения, которой будет вызван. При отсутствии вписываем "$NULL".</p>
+                            <p>В поле "buttons" вписываем кнопки и группы кнопок, которые будут вызваны.</p>
+                            <p class="examples_code">
+                                key_words = {
+                                $tab   "commands": {
+                                $tab2        "key_words": ["команды", "помощь"],
+                                $tab2        "event": "commands_event",
+                                $tab2        "message": "help",
+                                $tab2        "buttons": ["$buttons_group1"]
+                                $tab    },
+                                $tab    "functions": {
+                                $tab2        "key_words": ["функции"],
+                                $tab2        "event": "$NULL",
+                                $tab2        "message": "$NULL",
+                                $tab2        "buttons": ["btn3"]
+                                $tab    }
+                                }
+                            </p>
+                            <p>В файле <a href="#settings">settings.py</a> подключаем key_words.</p>
+                            <p class="examples_code">
+                                import key_words
+
+                                KEY_WORD = key_words.key_words
                             </p>
                         </div>
                     </div>

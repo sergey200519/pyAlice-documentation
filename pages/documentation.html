@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <header class="header">
+        <div class="wrapper"><header class="header">
             <div class="container header_container">
                 <a href="../index.html" class="header_logo-title">pyAlice</a>
                 <nav class="header_nav">
@@ -49,9 +49,9 @@
                             <li><a href="#buttons">buttons.py</a> файл для хранения кнопок</li>
                             <li><a href="#">events.py</a> файл для хранения event(ов)</li>
                             <li><a href="#key_words">key_words.py</a> файл для хранения key_words</li>
-                            <li><a href="#">messages.py</a> файл для хранения всех сообщений для пользователя</li>
-                            <li><a href="#">more_data_messages.py</a> (необязательно) файл для хранения дополнительных данных, выдаваемых пользователю</li>
-                            <li><a href="#">simulation.py</a> (необезятелно) файл для симуляции и тестирования проекта</li>
+                            <li><a href="#messages">messages.py</a> файл для хранения всех сообщений для пользователя</li>
+                            <li><a href="#more_data_messages">more_data_messages.py</a> (необязательно) файл для хранения дополнительных данных, выдаваемых пользователю</li>
+                            <li><a href="#simulation">simulation.py</a> (необезятелно) файл для симуляции и тестирования проекта</li>
                         </ul>
                         <p>Пример <a href="https://github.com/sergey200519/pyAlice-project" target="_blank">начального проекта</a></p>
                     </div>
@@ -84,7 +84,7 @@
                             <h3>Key words</h3>
                             <p>Константа TEXT_FOR_KEY_WORDS - источник откуда будет взят текст для обработки KeyWords. TEXT_FOR_KEY_WORDS может
                                 иметь лишь два значения "command" или "original_utterance".</p>
-                            <p>Константа KEY_WORD - ключевые слова, которые хранятся в файле <a href="">key_words.py</a>.</p>
+                            <p>Константа KEY_WORD - ключевые слова, которые хранятся в файле <a href="#key_words">key_words.py</a>.</p>
                             <p class="examples_code">
                                 TEXT_FOR_KEY_WORDS = "command"
                                 KEY_WORD = key_words.key_words
@@ -93,10 +93,9 @@
                         
                         <div class="">
                             <h3>Messages</h3>
-                            <p>Константа ALL_MESSAGES - все сообщения, которые хранятся в файле <a href="">messages.py</a>.</p>
+                            <p>Константа ALL_MESSAGES - все сообщения, которые хранятся в файле <a href="#messages">messages.py</a>.</p>
                             <p>Константа STARTING_MESSAGE - первое сообщение, которое увидет польззователь при входе в диалог.</p>
-                            <p>Константа MORE_DATA_MESSAGES - дополнительные данные к сообщениям, которые хранятся в файле <a
-                                    href="">more_data_messages.py</a>.</p>
+                            <p>Константа MORE_DATA_MESSAGES - дополнительные данные к сообщениям, которые хранятся в файле <a href="#more_data_messages">more_data_messages.py</a>.</p>
                             <p class="examples_code">
                                 ALL_MESSAGES = messages.messages
                                 STARTING_MESSAGE = "start_message"
@@ -189,10 +188,10 @@
                     <div class="key_words_documentation">
                         <div class="">
                             <h2 id="key_words">key_words.py</h2>
-                            <p>В файле buttons.py хранятся кнопки под уникальным именем, к которому можно обратиться и получить кнопку. Также кнопки можно объединять в группы и при обращении к группе будут вызваны все кнопки данной группе.</p>
+                            <p>В файле key_words.py хранятся ключевые слова под уникальным именем, к которому можно обратиться.</p>
                         </div>
                         <div class="">
-                            <h3>Buttons</h3>
+                            <h3>Key words</h3>
                             <p>В переменую key_words складываем все ключевые слова под уникальными ключами.</p>
                             <p>В поле "key_words" вписываем масссив слов при которых должно вызваться key_words.</p>
                             <p>В поле "event" вписываем event которой будет вызван. При отсутствии вписываем "$NULL".</p>
@@ -222,6 +221,77 @@
                             </p>
                         </div>
                     </div>
+                    <hr>
+                    <div class="messages_documentation">
+                        <div class="">
+                            <h2 id="messages">messages.py</h2>
+                            <p>В файле messages.py хранятся кнопки под уникальным именем, к которому можно обратиться и получить сообщение.</p>
+                        </div>
+                        <div class="">
+                            <h3>Messages</h3>
+                            <p>В переменую messages хранятся все сообщения под уникальными ключами. К ним можно обратиться и получить сообщение.</p>
+                            <p class="examples_code">
+                                messages = {
+                                $tab    "start_message": "Hello World",
+                                $tab    "error_message": "ERROR",
+                                $tab    "help": "Help",
+                                $tab    "end_message": "End"
+                                }
+                            </p>
+                            <p>В файле <a href="#settings">settings.py</a> подключаем messages.</p>
+                            <p class="examples_code">
+                                import messages
+
+                                ALL_MESSAGES = messages.messages
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="more_data_messages_documentation">
+                        <div class="">
+                            <h2 id="more_data_messages">more_data_messages.py</h2>
+                            <p>В переменую more_data_messages хранятся все дополнительные данные к сообщению.</p>
+                        </div>
+                        <div class="">
+                            <h3>More data messages</h3>
+                            <p>В переменую more_data_messages хранятся все дополнительные данные к сообщению. Ключ доп-данных должен совподать с ключом сообщения.</p>
+                            <p>На место "$MESSAGE" будет вставлено содержимое из ALL_MESSAGES под ключом more_data_messages</p>
+                            <p class="examples_code">
+                                more_data_messages = {
+                                $tab    "start_message": {
+                                $tab2        "card": {
+                                $tab3            "type": "BigImage",
+                                $tab3            "image_id": "1533899/e23e2c1e620580463a5d",
+                                $tab3            "description": "$MESSAGE"
+                                $tab2        }
+                                $tab    }
+                                }
+                            </p>
+                            <p>В файле <a href="#settings">settings.py</a> подключаем more_data_messages.</p>
+                            <p class="examples_code">
+                                import more_data_messages
+
+                                MORE_DATA_MESSAGES = more_data_messages.more_data_messages
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="simulation_documentation">
+                        <div class="">
+                            <h2 id="simulation">simulation.py</h2>
+                            <p>В переменую more_data_messages хранятся все дополнительные данные к сообщению.</p>
+                        </div>
+                        <div class="">
+                            <h3>Simulation</h3>
+                            <p>Класс Simulation позваляет симулировать работу Яндекс.Алисы, но симуляция воспринимет лишь текст.</p>
+                            <p class="examples_code">
+                                from pyAlice.simulation import Simulation
+                                import index
+
+                                Simulation(handler=index.handler)
+                            </p>
+                        </div>
+                    </div>
                     
                 </section>
                 <section class="main_container_right">
@@ -240,7 +310,7 @@
                         </div>
                     </div>
                 </section>
-            </div>            
+            </div>
         </main>
         <footer class="footer">
             <div class="container footer_container">
@@ -256,7 +326,7 @@
                     </nav>
                 </div>
             </div>
-        </footer>
+        </footer></div>
         <script type="module" src="../scripts/script.js"></script>
         <script src="../scripts/searchDocumentation.js"></script>
     </body>

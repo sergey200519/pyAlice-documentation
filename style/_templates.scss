@@ -1,0 +1,17 @@
+.button_with_gradient {
+    display: block;
+    width: fit-content;
+    padding: var(--butons_padding);
+    background: var(--main_color-gr);
+    color: var(--white);
+    border-radius: var(--button_radius);
+    font-weight: 700;
+    text-align: center;
+}
+
+.section_a_decoration {
+    & a {
+        color: var(--main_color);
+        border-bottom: 1px dotted #798780;
+    }
+}

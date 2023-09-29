@@ -1,0 +1,32 @@
+.examples_code {
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    background: var(--code_background);
+    overflow: scroll;
+
+    & pre {
+        display: inline-block;
+    }
+
+    & .py {
+        color: var(--py_code_color);
+        &-const {
+            color: var(--py-const_code_color);
+        }
+        &-string {
+            color: var(--py-string_code_color);
+        }
+    }
+    & .pyAlice {
+        color: var(--pyAlice_code_color);
+    }
+    & .text {
+        color: var(--text_code_color);
+    }
+}
+
+@media (max-width: 550px) {
+    .examples_code {
+        background: var(--white);
+    }
+}

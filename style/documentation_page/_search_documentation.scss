@@ -1,0 +1,39 @@
+.search_doc {
+    margin-bottom: var(--section_gap);
+    &_container {
+        display: flex;
+        justify-content: space-between;
+        &_search {
+            position: relative;
+            & input {
+                min-width: 300px;
+                padding: 15px 60px 15px 30px;
+                border: 0.5px solid #6540FF;
+                border-radius: var(--border-radius);
+            }
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: calc(50% - 15px);
+                width: 30px;
+                height: 30px;
+                background-image: url("../../img/search.png") ;
+                background-repeat: no-repeat;
+                background-size: contain;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .search_doc {
+        &_container {
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+    }
+}

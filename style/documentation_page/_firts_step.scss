@@ -1,0 +1,10 @@
+.firts_step {
+    & ul {
+        list-style-type: disc;
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+}

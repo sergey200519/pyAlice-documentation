@@ -1,0 +1,21 @@
+@import "./fonts";
+@import "./variables";
+@import "./main";
+@import "./templates";
+@import "./mixins";
+@import "./site_main";
+@import "./header";
+@import "./footer";
+
+@import "./code_style";
+
+
+// main site page
+@import "./main_page/about_framework";
+@import "./main_page/advantages";
+@import "./main_page/news_main_page";
+
+// doc
+@import "./documentation_page/documentation";
+@import "./documentation_page/search_documentation";
+@import "./documentation_page/firts_step";

@@ -1,0 +1,43 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // outline: 1px solid red;
+    font-family: 'Roboto', sans-serif;
+    // font-weight: 500;
+}
+h2 {
+    font-size: 32px;
+    margin: 40px 0px 30px;
+    font-weight: 500;
+}
+ul {
+    list-style-type: none;
+}
+
+button {
+    border: 0;
+}
+a {
+    text-decoration: none;
+    color: var(--black);
+}
+.container {
+    max-width: var(--container_width);
+    margin: 0 auto;
+    padding: var(--container_padding);
+}
+.none {
+    display: none;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main {
+    flex: 1 1 auto;
+}

@@ -1,0 +1,51 @@
+:root {
+    // colors
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #859d94;
+    --gray_backgraund: #f8f8f8;
+
+    --py_code_color: #008000;
+    --py-const_code_color: #d29966;
+    --py-string_code_color: #19177c;
+    --pyAlice_code_color: #0000ff;
+    --text_code_color: #0c4b33;
+    --code_background: #f8f8f8;
+
+    --main_color: #6540ff;
+    --main_color-gr: linear-gradient(0deg, #6540ff 0%, #9278ff 100%);
+
+    // main
+    --border-radius: 15px;
+    --gap_between_paragraphs: 15px;
+
+    // container
+    --container_width: 1920px;
+    --container_padding: 0 50px;
+
+    // header
+    --container_padding_header: 20px 50px;
+
+    // footer
+    --container_padding_footer: var(--container_padding_header);
+
+    // sections
+    --section_gap: 60px;
+
+    // buttons
+    --butons_padding: 20px 50px;
+    --button_radius: calc(var(--border-radius) - 5px);
+}
+
+@media (max-width: 550px) {
+    :root {
+        // container
+        --container_padding: 0 15px;
+
+        // header
+        --container_padding_header: 20px 15px;
+
+        // buttons
+    --butons_padding: 10px 20px;
+    }
+}

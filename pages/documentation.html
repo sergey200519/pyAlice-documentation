@@ -21,9 +21,8 @@
                 <nav class="header_nav">
                     <ul>
                         <li><a href="../index.html">Гланая</a></li>
-                        <li><a href="#">Скачать</a></li>
-                        <li><a href="#">Документация</a></li>
-                        <li><a href="#">Новости</a></li>
+                        <li><a href="https://pypi.org/project/pyaliceya/">Скачать</a></li>
+                        <li><a href="/">Документация</a></li>
                     </ul>
                 </nav>
             </div>
@@ -44,10 +43,10 @@
                     <div class="firts_step">
                         <h2>Начальная структура проекта</h2>
                         <ul>
-                            <li><a href="#">index.py</a></li>
+                            <li><a href="#index">index.py</a></li>
                             <li><a href="#settings">settings.py</a> файл для хранения настроек</li>
                             <li><a href="#buttons">buttons.py</a> файл для хранения кнопок</li>
-                            <li><a href="#">events.py</a> файл для хранения event(ов)</li>
+                            <li><a href="#events">events.py</a> файл для хранения event(ов)</li>
                             <li><a href="#key_words">key_words.py</a> файл для хранения key_words</li>
                             <li><a href="#messages">messages.py</a> файл для хранения всех сообщений для пользователя</li>
                             <li><a href="#more_data_messages">more_data_messages.py</a> (необязательно) файл для хранения дополнительных данных, выдаваемых пользователю</li>
@@ -244,6 +243,16 @@
 
                                 ALL_MESSAGES = messages.messages
                             </p>
+                            <p>Мы можем изменить сообщение выдоваемое пользователю.</p>
+                            <div class="examples_code">
+                                from pyAlice.functions import end_alice_event
+                                from events import function_example_event
+
+                                def handler(event, context):
+                                $tab py = PyAlice(params_alice=event, settings=settings)
+                                $tab py.add_message(key_mesage)
+                                $tab return py.get_params_for_alice()
+                            </div>
                         </div>
                     </div>
                     <hr>
@@ -254,7 +263,7 @@
                         </div>
                         <div class="">
                             <h3>More data messages</h3>
-                            <p>В переменую more_data_messages хранятся все дополнительные данные к сообщению. Ключ доп-данных должен совподать с ключом сообщения.</p>
+                            <p>В переменой more_data_messages хранятся все дополнительные данные к сообщению. Ключ доп-данных должен совподать с ключом сообщения.</p>
                             <p>На место "$MESSAGE" будет вставлено содержимое из ALL_MESSAGES под ключом more_data_messages</p>
                             <p class="examples_code">
                                 more_data_messages = {
@@ -273,6 +282,77 @@
 
                                 MORE_DATA_MESSAGES = more_data_messages.more_data_messages
                             </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="events_documentation">
+                        <div class="">
+                            <h2 id="events">events.py</h2>
+                            <p>В файле events.py хранятся функции, которые подключаютс к event(ам) в файле settings.py.</p>
+                        </div>
+                        <div class="">
+                            <h3>Events</h3>
+                            <p>функция event(а) принимает два параметра:</p>
+                            <p>event - даннные о event(е).</p>
+                            <p>cls - экземпляр класса, с которым мы работаем.</p>
+                            <p class="examples_code">
+                                def function_example_event(event, cls):
+                                $tab    pass
+                            </p>
+                            <p>В файле <a href="#settings">settings.py</a> соиденяем названия и функции.</p>
+                            <p class="examples_code">
+                                from pyAlice.functions import end_alice_event
+                                from events import function_example_event
+
+                                EVENTS_LIST = {
+                                $tab    "endAliceEvent": end_alice_event,
+                                $tab    "exampleEvent": function_example_event
+                                }
+                                IGNORE_EVENTS_LIST = ["storageFillEvent"]
+                            </p>
+                            <p>Event(ы) бывают встроимые и кастомные.</p>
+                            <p>Встроиные event(ы) вызываются сами. Некоторые из них уже имеют встроеный функционал. Например, "endAliceEvent" имеет встроеный функционал и при вызове данного event(а) завершается сесия.</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="index_documentation">
+                        <div class="">
+                            <h2 id="index">index.py</h2>
+                            <p>В файле index.py хранятся функция <a href="#handler">handler</a>, которая вызывается при запросе на сервер.</p>
+                        </div>
+                        <div class="" id="handler">
+                            <h3>Handler</h3>
+                            <p>Функция handler принимает два параметра, "event" и "context"</p>
+                            <p class="examples_code">
+                                def handler(event, context):
+                                $tab    pass
+                            </p>
+                            <p class="examples_code">
+                                from pyAlice.functions import end_alice_event
+                                from events import function_example_event
+
+                                def handler(event, context):
+                                $tab return PyAlice(params_alice=event, settings=settings).get_params_for_alice()
+                            </p>
+                        </div>
+                        <div class="">
+                            <h3>get_params_for_alice()</h3>
+                            <p>Метод get_params_for_alice() возвращает ответ для диалога. По умолчанию ответ в виде json</p>
+                            <p class="examples_code">
+                                from pyAlice.functions import end_alice_event
+                                from events import function_example_event
+
+                                def handler(event, context):
+                                $tab return PyAlice(params_alice=event, settings=settings).get_params_for_alice()
+                            </p>
+                            <p class="examples_code">
+                                from pyAlice.functions import end_alice_event
+                                from events import function_example_event
+
+                                def handler(event, context):
+                                $tab py = PyAlice(params_alice=event, settings=settings).get_params_for_alice( "dict" )
+                            </p>
+                            <p>Получив параметры в виде dict их можно обработать и вернуть их конверктировав в json</p>
                         </div>
                     </div>
                     <hr>
@@ -319,9 +399,8 @@
                     <nav class="footer_menu_nav">
                         <ul>
                             <li><a href="../index.html">Гланая</a></li>
-                            <li><a href="#">Скачать</a></li>
-                            <li><a href="#">Документация</a></li>
-                            <li><a href="#">Новости</a></li>
+                            <li><a href="https://pypi.org/project/pyaliceya/">Скачать</a></li>
+                            <li><a href="/">Документация</a></li>
                         </ul>
                     </nav>
                 </div>

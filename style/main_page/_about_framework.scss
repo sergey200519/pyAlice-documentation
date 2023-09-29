@@ -1,0 +1,21 @@
+.about_framework {
+    
+    margin-bottom: var(--section_gap);
+
+    & h1 {
+        font-size: 60px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    & p {
+        text-align: center;
+        margin-bottom: 100px;
+    }
+    & a {
+        @extend .button_with_gradient;
+        margin: 0 auto;
+    }
+}
+.about_framework_main_site {
+    @include font_family_size-italic("Palatino", 18px);
+}
